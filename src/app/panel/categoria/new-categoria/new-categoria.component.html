@@ -1,0 +1,36 @@
+<div class="card mt-5">
+    <div class="card-body">
+        <form #categoriaForm="ngForm" (ngSubmit)="onSubmit(categoriaForm)">
+            <input type="hidden" name="id" id="" #id="ngModel" [(ngModel)]="categoriaservice.selectedCategoria.id">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="nombre" #nombre  [(ngModel)]="categoriaservice.selectedCategoria.nombre" placeholder="Agerar nombre">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <input type="file" class="form-control" name="image" #image (change)="handImageCategory($event)" >
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <textarea name="description"  #description  [(ngModel)]="categoriaservice.selectedCategoria.description" placeholder="Agerar descripcion corta" cols="60" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="from-group">
+            <button class="btn btn-primary" type="submit">
+                <i class="fas fa-plus-circle"></i> Agregar
+            </button>
+            <button class="btn btn-secondary" type="reset" (click)="resetForm(categosriaForm)" >
+                <i class="fas fa-sync-alt"></i> Reset
+            </button>
+            </div>
+        </form>
+    </div>
+</div>

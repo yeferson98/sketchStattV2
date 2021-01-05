@@ -1,0 +1,117 @@
+
+<div class="card mt-5">
+    <div class="card-body">
+        <form #especialidadForm="ngForm" (ngSubmit)="onSubmit(especialidadForm)">
+            <!--<input type="hidden" name="$key" id="" #$key="ngModel" [(ngModel)]="profesionService.selectedprofesion.$key">-->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="name" class="bmd-label-floating">Nombres</label>
+                        <input type="text" class="form-control" name="nombre" id="name" #nombre  [(ngModel)]="profesionService.selectedprofesion.descripcion">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="apellido" class="bmd-label-floating">Apellido</label>
+                        <input type="text" class="form-control" name="apellido" #apellido id="apellido" [(ngModel)]="profesionService.selectedprofesion.apellido" >
+                   </div>
+               </div>
+               <div class="col-md-4">
+                <div class="form-group">
+                    <label for="direccionconsultorio" class="bmd-label-floating">Dirección de Consultorio</label>
+                    <input type="text" id="direccionconsultorio" class="form-control" name="direccionconsultorio" #direccionconsultorio id="" [(ngModel)]="profesionService.selectedprofesion.direccionconsultorio" >
+                </div>
+            </div>
+            </div>
+        <div class="row">
+               <div class="col-md-4">
+                <div class="form-group">
+                    <label for="celular" class="bmd-label-floating">Celular</label>
+                    <input type="text" id="celular" class="form-control" name="celular" #celular id="" [(ngModel)]="profesionService.selectedprofesion.celular" >
+                </div>
+               </div>
+               <div class="col-md-4">
+                <div class="form-group">
+                    <label for="email" class="bmd-label-floating">Email</label>
+                    <input type="email" id="email" class="form-control" name="email" #email id="" [(ngModel)]="profesionService.selectedprofesion.email" >
+                </div>
+               </div>
+               <div class="col-md-4">
+                <div class="form-group">
+                    <input type="date" class="form-control" name="fechaNacimiento" #fechaNacimiento [(ngModel)]="profesionService.selectedprofesion.fechaNacimiento">
+                </div>
+            </div>
+       </div>
+        <div class="row">
+            
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="sexo" class="bmd-label-floating">Seleccione Sexo</label>
+                    <select class="form-control" id="sexo" style="width: 100%" name="sexo" #sexo [(ngModel)]="profesionService.selectedprofesion.sexo"
+                     >
+                      <option value="Hombre">Hombre</option>
+                      <option value="Mujer">Mujer</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="Especialidad" class="bmd-label-floating">Seleccione Especialidad</label>
+                    <select class="form-control" id="Especialidad" style="width: 100%" name="idProfesion" #idProfesion [(ngModel)]="profesionService.selectedprofesion.idProfesion"
+                     >
+                      <option *ngFor="let item of EspecialidadList" value="{{item.$key}}">{{item.descripcion}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="departamento" class="bmd-label-floating">Seleccione Departamento</label>
+                    <select class="form-control" id="departamento" style="width: 100%" name="departamento" #departamento [(ngModel)]="profesionService.selectedprofesion.departamento"
+                    (change)='listProvinces($event.target.value)' aria-placeholder="hola" >
+                      <option *ngFor="let item of DataDepartaments" value="{{item.id_ubigeo}}">{{item.nombre_ubigeo}}</option>
+                    </select>
+                </div>
+         </div>
+        </div>
+          <div class="row">
+
+             <div class="col-md-4">
+                <div class="form-group">
+                    <label for="provincia" class="bmd-label-floating">Seleccione Provincia</label>
+                    <select class="form-control" style="width: 100%" id="provincia" name="provincia" #provincia [(ngModel)]="profesionService.selectedprofesion.provincia"
+                    (change)='listDistricts($event.target.value)'>
+                      <option *ngFor="let item of DataProvinces" value="{{item.id_ubigeo}}">{{item.nombre_ubigeo}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="distrito" class="bmd-label-floating">Seleccione Distrito</label>
+                    <select class="form-control" id="distrito" style="width: 100%" name="distrito" #distrito [(ngModel)]="profesionService.selectedprofesion.distrito"
+                    >
+                      <option *ngFor="let item of DataDistricts" value="{{item.id_ubigeo}}">{{item.nombre_ubigeo}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <input type="file" class="form-control" name="urlImg" #urlImg (change)="handImage($event)" >
+                </div>
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="from-group">
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-plus-circle"></i> Agregar
+                </button>
+                <button class="btn btn-secondary" type="reset" (click)="resetForm(especialidadForm)" >
+                    <i class="fas fa-sync-alt"></i> Reset
+                </button>
+            </div>
+          </div>
+
+        </form>
+    </div>
+</div>

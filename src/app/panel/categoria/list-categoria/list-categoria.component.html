@@ -1,0 +1,33 @@
+<div class="card ">
+    <div class="card-body">
+        <h6 class="text-center">Lista de Categorias</h6>
+        <div class="container-fluid">
+            <div class="table-responsive">
+                <table class="table table-dark table-sm">
+                    <thead>
+                        <tr class="text-center roboto-medium">
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let categoria of CategoriaList" class="text-center" >
+                            <td><img src="{{categoria.image}}" alt="Image Not found" class="avatar-category"></td>
+                            <td>{{categoria.nombre}}</td>
+                            <td>
+                                <a class="btn btn-secondary " (click) ="onEdit(categoria)">
+                                    <i class="far fa-edit" title="editar"></i>
+                                </a>
+                                <a class="btn btn-danger " (click)="onDelete(categoria.id)">
+                                    <i class="fas fa-trash-alt" title="Eliminar"></i>
+                                </a>
+                            </td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+
+</div>
